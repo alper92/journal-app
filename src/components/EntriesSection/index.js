@@ -6,6 +6,10 @@ import Tab from "../Tab";
 import Badge from "../Badge";
 import { Fragment } from "react";
 
+/* A Fragment is a special React component that allows 
+ you to group multiple children without adding extra DOM elements 
+ to the rendered output. */
+
 export default function EntriesSection({ entries }) {
   return (
     <section className="entries-section">
