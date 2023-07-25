@@ -4,8 +4,13 @@ import Entry from "../Entry";
 import Tabs from "../Tabs";
 import Tab from "../Tab";
 import Badge from "../Badge";
+import { Fragment } from "react";
 
-export default function EntriesSection() {
+/* A Fragment is a special React component that allows 
+ you to group multiple children without adding extra DOM elements 
+ to the rendered output. */
+
+export default function EntriesSection({ entries }) {
   return (
     <section className="entries-section">
       <Tabs>
@@ -17,23 +22,12 @@ export default function EntriesSection() {
         </Tab>
       </Tabs>
       <div className="entries-section__entries">
-        <Entry
-          date="Feb 27, 2028"
-          motto="Thats life in the city"
-          notes="Si sine causa? quae fuerit causa, mox videro; interea hoc tenebo, si mihi. Et quidem se repellere, idque instituit docere sic omne animal, simul atque."
-        />
-        <Divider />
-        <Entry
-          date="Feb 26, 2028"
-          motto="Thats life in the city"
-          notes="Si sine causa? quae fuerit causa, mox videro; interea hoc tenebo, si mihi. Et quidem se repellere, idque instituit docere sic omne animal, simul atque."
-        />
-        <Divider />
-        <Entry
-          date="Feb 25, 2028"
-          motto="Thats life in the city"
-          notes="Si sine causa? quae fuerit causa, mox videro; interea hoc tenebo, si mihi. Et quidem se repellere, idque instituit docere sic omne animal, simul atque."
-        />
+        {entries.map((entry, index) => (
+          <Fragment key={entry.id}>
+            {index > 0 ? <Divider /> : null}
+            <Entry date={entry.date} motto={entry.motto} notes={entry.notes} />
+          </Fragment>
+        ))}
       </div>
     </section>
   );
