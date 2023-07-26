@@ -18,13 +18,28 @@ function App() {
     const isFavorite = false;
     setEntries([{ id: uid(), date, isFavorite, ...newEntry }, ...entries]);
   }
+
+  // ---------- share the state of setEntries to toggle the button ----------
+  function handleToggleFavorite(id) {
+    setEntries(
+      entries.map((entry) =>
+        entry.id === id ? { ...entry, isFavorite: !entry.isFavorite } : entry
+      )
+    );
+  }
+
   console.log(entries);
+  // very interesting to see a new log after pressing the favorite button :)
+
   return (
     <div className="app">
       <Header />
       <main className="app__main">
         <EntryForm onAddEntry={handleAddEntry} />
-        <EntriesSection entries={entries} />
+        <EntriesSection
+          entries={entries}
+          onToggleFavorite={handleToggleFavorite}
+        />
       </main>
       <Footer />
     </div>
