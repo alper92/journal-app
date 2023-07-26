@@ -10,7 +10,7 @@ export default function EntryForm({ onAddEntry }) {
 
     onAddEntry(data);
 
-    console.log(data);
+    // console.log(data);
     event.target.reset();
   }
 
