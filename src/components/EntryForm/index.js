@@ -8,6 +8,8 @@ export default function EntryForm({ onAddEntry }) {
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
+    onAddEntry(data);
+
     console.log(data);
     event.target.reset();
   }
