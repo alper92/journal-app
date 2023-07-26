@@ -15,9 +15,10 @@ function App() {
     const date = new Date().toLocaleDateString("en-us", {
       dateStyle: "medium",
     });
-    setEntries([{ id: uid(), date, ...newEntry }, ...entries]);
+    const isFavorite = false;
+    setEntries([{ id: uid(), date, isFavorite, ...newEntry }, ...entries]);
   }
-
+  console.log(entries);
   return (
     <div className="app">
       <Header />
