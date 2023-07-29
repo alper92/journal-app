@@ -10,15 +10,23 @@ import { Fragment } from "react";
  you to group multiple children without adding extra DOM elements 
  to the rendered output. */
 
-export default function EntriesSection({ entries, onToggleFavorite }) {
+export default function EntriesSection({
+  entries,
+  onToggleFavorite,
+  onShowAllEntries,
+  onShowFavoriteEntries,
+  allEntriesCount,
+  favoriteEntriesCount,
+  filter,
+}) {
   return (
     <section className="entries-section">
       <Tabs>
-        <Tab active>
-          All Entries <Badge isActive>3</Badge>
+        <Tab onClick={onShowAllEntries} isActive={filter === "all"}>
+          All Entries <Badge isActive>{allEntriesCount}</Badge>
         </Tab>
-        <Tab>
-          Favorites <Badge>1</Badge>
+        <Tab onClick={onShowFavoriteEntries} isActive={filter === "favorites"}>
+          Favorites <Badge>{favoriteEntriesCount}</Badge>
         </Tab>
       </Tabs>
       <div className="entries-section__entries">
